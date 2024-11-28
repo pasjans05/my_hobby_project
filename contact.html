@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>General Aviation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <img src="img\hangar.jpg">
+            <h1>General Aviation</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Main page</a></li>
+                <li><a href="aircraft.html">Aircraft fleet</a></li>
+                <li><a class="active" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="content" class="form">
+            <svg width="200" height="200"  xmlns="http://www.w3.org/2000/svg">
+                <g fill="#B0C4DE">
+                    <ellipse cx="50" cy="80" rx="35" ry="25" /> 
+                    <ellipse cx="100" cy="80" rx="40" ry="30" /> 
+                    <ellipse cx="150" cy="80" rx="35" ry="25" /> 
+                    <ellipse cx="90" cy="60" rx="40" ry="30" /> 
+                    <ellipse cx="140" cy="60" rx="35" ry="25" /> 
+                </g>
+            </svg>
+            <h2>Contact form</h2>
+            <p>If you have any questions or reports about this website or it's contents please fill the form below.</p>
+            <form action="action.php">
+                Email:<br />
+                <input type="email" id="email" name="email" value="Please enter your email address"><br /><br />
+                Name:<br />
+                <input type="text" name="name" value="Please enter your name" /><br /><br />
+                Gender:<br />
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="male" value="male" />
+                <label for="female">Female</label>
+                <input type="radio" name="gender" id="female" value="female" />
+                <label for="other">Other/Would rather not specify</label>
+                <input type="radio" name="gender" id="other" value="other" /><br /><br />
+                Date of birth:
+                <input type="date" id="dob" name="dob" /><br /><br />
+                License:<br />
+                <label for="ppl">PPL(A)</label>
+                <input type="radio" name="license" id="ppl" value="ppl" />
+                <label for="cpl">CPL(A)</label>
+                <input type="radio" name="license" id="cpl" value="cpl" />
+                <label for="atpl">ATPL(A)</label>
+                <input type="radio" name="license" id="atpl" value="atpl" />
+                <label for="none">none</label>
+                <input type="radio" name="license" id="none" value="none" /><br /><br />
+                Home airfield:
+                <select>
+                    <option value="EPEL">EPEL</option>
+                    <option value="EPGD">EPGD</option>
+                    <option value="EPOK">EPOK</option>
+                </select><br /><br />
+                <textarea rows="10" cols="110">
+                    type here...
+                </textarea><br /><br />
+
+                <input type="submit" />
+                <input type="reset" />
+            </form>
+        </div>
+    </div>
+    <footer> Copyright 2024, Stanisław Kardaś 203880 1B </footer>
+</body>
+</html>
