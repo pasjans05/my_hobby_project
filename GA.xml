@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<general_aviation>
+<general_aviation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GA.xsd">
 	<information>
 		<about>
-			General aviation are all civilian aviation operations other than scheduled airline transport. Examples can be flight training, private flights or just casual flying in your own or rented aircraft. According to AOPA more than 90% of all civil aircraft registered in the United States are general aviation aircraft.
+			General aviation are all civilian aviation operations other than scheduled airline transport. Examples can be flight training, private flights or just casual flying in your own or rented aircraft. According to <link source="https://aopa.org">AOPA</link> more than 90% of all civil aircraft registered in the United States are general aviation aircraft.
 		</about>
 		<links>
 			<link source="https://www.ais.pansa.pl/publikacje/aip-polska/">AIP Poland</link>
@@ -11,65 +11,83 @@
 		</links>
 	</information>
 	<licensing>
+		<list>
+			PPL(A)
+			CPL(A)
+			ATPL(A)
+		</list>
 		<description kind="PPL(A)">PPL(A) is a basic license that is the first step into aviation. With this license you are not allowed to earn money on your operations, however you can share costs of the flight with your passangers. By default you can fly any single engine piston with MTOW up to 5700 kg but this can be enhanced by type ratings and other additional certification.</description>
 		<description kind="CPL(A)">CPL(A) allows a pilot to earn money on aviation operations, but not in a regular airline transport. You may for example charge passengers for scenic flights. To get this license you need PPL(A) license, VFR Night and MEP(L) certification as well as at least 150 hours of flying experience.</description>
 		<description kind="ATPL(A)">ATPL(A) shares the practical part with CPL(A) but has a way more advanced theoretical training. This license allows you to fly as an airline pilot in regular commercial transport.</description>
+		<requirements kind="PPL(A)">Minimum age of 16 at the start of the training and 17 at the moment of applying for the license and 2nd class medical certificate.</requirements>
+		<requirements kind="CPL(A)">Valid PPL(A) license, 1st class medical certificare, at least 150 hours of flight experience 10 of which as PIC, MEP(L) and VFR Night certification as well as a completed ATPL(A) or CPL(A) theoretical course.</requirements>
+		<requirements kind="ATPL(A)">1st class medical certificate, ATPL(A) Frozen license and MCC+JOC certification.</requirements>
 	</licensing>
 	<airports>
 		<airport ICAO="EPEL" type="VFR">
 			<name>Elblag</name>
-			<radio>122.305</radio>
+			<radio>122.305 MHz</radio>
 		</airport>
 		<airport ICAO="EPGD" type="IFR">
 			<name>Gdansk</name>
-			<radio>118.105</radio>
+			<radio>118.105 MHz</radio>
 		</airport>
 		<airport ICAO="EPOK" type="MIL">
 			<name>Oksywie</name>
-			<radio>119.850</radio>
+			<radio>119.850 MHz</radio>
 		</airport>
 		<airport ICAO="EPMB" type="MIL">
 			<name>Malbork</name>
-			<radio>123.000</radio>
+			<radio>123.000 MHz</radio>
 		</airport>
 		<airport ICAO="EPSK" type="VFR">
 			<name>Krepa</name>
-			<radio>118.225</radio>
+			<radio>118.225 MHz</radio>
 		</airport>
 		<airport ICAO="EPPL" type="VFR">
 			<name>Pila</name>
-			<radio>122.405</radio>
+			<radio>122.405 MHz</radio>
 		</airport>
 		<airport ICAO="EPBY" type="IFR">
 			<name>Bydgoszcz</name>
-			<radio>131.005</radio>
+			<radio>131.005 MHz</radio>
 		</airport>
 	</airports>
 	<fleet>
-		<airplane registration="D-EHPF">
-			<type>Cessna 150M</type>
+		<airplane registration="D-EHPF" seats="2">
+			<model>Cessna 150M</model>
 			<image source="img/DEHPF.jpg" />
 			<about>It's a popular trainer type Cessna 150M aircraft operated by Aeroclub of Elblag. This two-seater aircraft is equipped with the current standard 8.33 kHz separation radio and mode S transponder. Additionaly there is a garmin navigation unit onboard.</about>
 		</airplane>
-		<airplane registration="SP-KBW">
-			<type>Cessna 150M</type>
+		<airplane registration="SP-KBW" seats="2">
+			<model>Cessna 150M</model>
 			<image source="img/SPKBW.jpg" />
 			<about>This aircraft is type C150M just as D-EHPF, however equipment between these two varies. SP-KBW also has 8.33 kHz radio separation, but it's transponder operates at most in mode C. For navigation VOR beacons can be used, which is not available on D-EHPF.</about>
 		</airplane>
-		<airplane registration="SP-WBK">
-			<type>Cessna 150L</type>
+		<airplane registration="SP-WBK" seats="2">
+			<model>Cessna 150L</model>
 			<image source="img/SPWBK.jpg" />
 			<about>This Cessna 150L despite being older than the previous two is the best equipped one. It has been fitted with two brand new digital garmin avionics screens in place of artificial horizon and gyrocompass. It also has standard radio and mode S transponder.</about>
 		</airplane>
-		<airplane registration="SP-CAS">
-			<type>Socata Rallye 235E-D</type>
+		<airplane registration="SP-CAS" seats="4">
+			<model>Socata Rallye 235E-D</model>
 			<image source="img/SPCAS.jpg" />
 			<about>It's a four-seater Socata Rallye 235E-D is being used by Aeroclub of Elblag for scenic flights as well as aerotow for gliders. This is a lot more complicated aircraft than C150 due to it having variable-pitch propeller. Also it has a great STOL capabilities due to it's automatic leading edge slats and Fowler-type trailing edge flaps.</about>
 		</airplane>
 		<airplane registration="HA-YDM">
-			<type>Technoavia SMG-92 Turbo-Finist</type>
+			<model>Technoavia SMG-92 Turbo-Finist</model>
 			<image source="img/HAYDM.jpg" />
 			<about>Largest and one of the most advanced aircraft from Aeroclub's fleet is this registered in Hungary Technoavia SMG-92 Turbo-Finist. This taildragger with turboprop engine due to it's STOL capabilites and great climb ratio is being used for skydiving.</about>
 		</airplane>
+		<media>
+			<image source="img/HAYDM_DEHPF.jpg" />
+			<image source="img/SPKBW_SPCAS.jpg" />
+		</media>
+		<base ICAO="EPEL" type="VFR">
+			<name>Elblag</name>
+			<radio>122.305</radio>
+			<runway>08/26</runway>
+			<elevation>10ft</elevation>
+		</base>
 	</fleet>
 </general_aviation>

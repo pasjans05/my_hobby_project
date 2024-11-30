@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:element name="general_aviation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="information" type="informationType" />
+				<xs:element name="licensing" type="licensingType" />
+				<xs:element name="airports" type="airportsType" />
+				<xs:element name="fleet" type="fleetType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="informationType">
+		<xs:all>
+			<xs:element name="links" type="linksType" />
+			<xs:element ref="about" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:attribute name="kind" type="licensekindType" />
+
+	<xs:complexType name="licensingType">
+		<xs:sequence>
+			<xs:element name="list">
+				<xs:simpleType>
+					<xs:restriction base="licenselist">
+						<xs:length value="3" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="description" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute ref="kind" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="requirements" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute ref="kind" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="airportsType">
+		<xs:sequence>
+			<xs:element name="airport" type="airportType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="fleetType">
+		<xs:sequence>
+			<xs:element name="airplane" type="airplaneType" maxOccurs="unbounded" />
+			<xs:element name="media" type="linksType" />
+			<xs:element name="base" type="baseType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="about">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element name="link" type="linkType" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="linksType">
+		<xs:choice>
+			<xs:element name="link" type="linkType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="image" type="linkType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:group name="airportGroup">
+		<xs:sequence>
+			<xs:element name="name" type="nameType" />
+			<xs:element name="radio" type="radioType" />
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:complexType name="airportType">
+		<xs:group ref="airportGroup" />
+		<xs:attribute name="ICAO">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:length value="4" />
+				</xs:restriction> 
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="type" type="airporttypeType" />
+	</xs:complexType>
+
+	<xs:complexType name="airplaneType">
+		<xs:sequence>
+			<xs:element name="model">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="image" type="linkType" />
+			<xs:element ref="about" />
+		</xs:sequence>
+		<xs:attribute name="registration" type="registrationType" use="required"/>
+		<xs:attribute name="seats" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:pattern value="[0-6]" />
+					<xs:minInclusive value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="linkType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="source" type="xs:anyURI" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="baseType">
+		<xs:complexContent>
+			<xs:extension base="airportType">
+				<xs:sequence>
+					<xs:element name="runway" type="xs:string" minOccurs="0"/>
+					<xs:element name="elevation" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="licensekindType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PPL(A)" />
+			<xs:enumeration value="CPL(A)" />
+			<xs:enumeration value="ATPL(A)" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="nameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="radioType">
+		<xs:union memberTypes="freqType xs:string" />
+	</xs:simpleType>
+
+	<xs:simpleType name="freqType">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="airporttypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="VFR" />
+			<xs:enumeration value="IFR" />
+			<xs:enumeration value="MIL" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="registrationType">
+		<xs:restriction base="xs:string">
+			<xs:length value="6" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="licenselist">
+		<xs:list itemType="licensekindType" />
+	</xs:simpleType>
+	
+</xs:schema>
